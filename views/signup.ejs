@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <style>
+    /* Basic styling for the body */
+    body {
+      font-family: 'Inter', Arial, sans-serif; /* Consistent font with home.ejs and login.ejs */
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Ensure full viewport height */
+      margin: 0;
+      color: #333;
+      box-sizing: border-box; /* Include padding in element's total width and height */
+      padding: 20px; /* Add some padding for smaller screens */
+    }
+
+    /* Signup container styling */
+    .signup-container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px; /* More rounded corners */
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* Enhanced shadow */
+      width: 100%;
+      max-width: 450px; /* Consistent width with login container */
+      box-sizing: border-box;
+      border: 1px solid #e0e0e0; /* Subtle border */
+    }
+
+    /* Heading style */
+    h1 {
+      text-align: center;
+      margin-bottom: 30px; /* More space below heading */
+      color: #007bff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    /* Label styling */
+    label {
+      display: block;
+      margin-bottom: 10px; /* More space below label */
+      font-weight: 600;
+      color: #555;
+    }
+
+    /* Input field styling */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: calc(100% - 24px); /* Account for padding and border */
+      padding: 12px; /* More padding for input */
+      margin-bottom: 25px; /* More space below input */
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px; /* More rounded corners */
+      box-sizing: border-box;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+      outline: none;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 15px; /* More padding for button */
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 8px; /* More rounded corners */
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    }
+    button:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px); /* Slight lift on hover */
+      box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+    }
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Error message styling */
+    .error-message {
+      color: #dc3545; /* Red color for errors */
+      background-color: #f8d7da; /* Light red background */
+      border: 1px solid #f5c6cb; /* Red border */
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    /* Link for login */
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+    .login-link a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 480px) {
+      .signup-container {
+        padding: 20px 25px; /* Reduce padding on smaller screens */
+        max-width: 95%;
+      }
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      button {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Signup</h1>
+
+    <% if (locals.error) { %>
+      <div class="error-message">
+        <%= locals.error %>
+      </div>
+    <% } %>
+
+    <form action="/user" method="post">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required placeholder="Your email address" />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required placeholder="Choose a password" />
+
+      <button type="submit">Signup</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="/login">Log In</a>
+    </div>
+  </div>
+</body>
+</html>
